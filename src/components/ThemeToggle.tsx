@@ -1,10 +1,27 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { LaptopMinimalCheckIcon, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
 	const { setTheme, theme } = useTheme();
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) {
+		return (
+			<div className="flex items-center gap-2 rounded-full border border-muted">
+				<Skeleton className="h-8 w-8 rounded-full" />
+				<Skeleton className="h-8 w-8 rounded-full" />
+				<Skeleton className="h-8 w-8 rounded-full" />
+			</div>
+		);
+	}
 	return (
 		<div className="flex items-center gap-2 rounded-full border border-muted">
 			<button
