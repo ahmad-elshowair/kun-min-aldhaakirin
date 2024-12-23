@@ -1,9 +1,18 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { LaptopMinimalCheckIcon, Moon, Sun } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { LaptopMinimalCheckIcon, Moon, SunDim } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
 	const { setTheme, theme } = useTheme();
@@ -14,43 +23,45 @@ export function ThemeToggle() {
 	}, []);
 
 	if (!mounted) {
-		return (
-			<div className="flex items-center gap-2 rounded-full border border-muted">
-				<Skeleton className="h-8 w-8 rounded-full" />
-				<Skeleton className="h-8 w-8 rounded-full" />
-				<Skeleton className="h-8 w-8 rounded-full" />
-			</div>
-		);
+		return <Skeleton className="h-9 w-9 rounded-full border border-border" />;
 	}
+
 	return (
-		<div className="flex items-center gap-2 rounded-full border border-muted">
-			<button
-				onClick={() => setTheme("system")}
-				className={`p-2 rounded-full transition-colors ${
-					theme === "system"
-						? "bg-secondary text-yellow-500"
-						: "text-muted-foreground"
-				}`}>
-				<LaptopMinimalCheckIcon className="h-4 w-4" />
-			</button>
-			<button
-				onClick={() => setTheme("light")}
-				className={`p-2 rounded-full transition-colors ${
-					theme === "light"
-						? "bg-secondary text-yellow-500"
-						: "text-muted-foreground"
-				}`}>
-				<Sun className="h-4 w-4" />
-			</button>
-			<button
-				onClick={() => setTheme("dark")}
-				className={`p-2 rounded-full transition-colors ${
-					theme === "dark"
-						? "bg-secondary text-yellow-500"
-						: "text-muted-foreground"
-				}`}>
-				<Moon className="h-4 w-4" />
-			</button>
-		</div>
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>
+				<Button variant={"outline"} size="sm" className="rounded-full w-9 h-9">
+					<SunDim
+						className={`h-[1.2rem] w-[1.2rem] transition-all ${
+							theme === "light" ? "rotate-0 scale-100" : "-rotate-90 scale-0"
+						}`}
+					/>
+					<Moon
+						className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${
+							theme === "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0"
+						}`}
+					/>
+					<LaptopMinimalCheckIcon
+						className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${
+							theme === "system" ? "rotate-0 scale-100" : "rotate-90 scale-0"
+						}`}
+					/>
+					<span className="sr-only">Toggle theme</span>
+				</Button>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent align="end">
+				<DropdownMenuItem onClick={() => setTheme("light")}>
+					<SunDim className="mr-2 h-4 w-4" />
+					<span>Light</span>
+				</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => setTheme("dark")}>
+					<Moon className="mr-2 h-4 w-4" />
+					<span>Dark</span>
+				</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => setTheme("system")}>
+					<LaptopMinimalCheckIcon className="mr-2 h-4 w-4" />
+					<span>System</span>
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
 	);
 }

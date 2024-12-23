@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
 import { FaPersonPraying } from "react-icons/fa6";
 import { GiNightSleep } from "react-icons/gi";
+import { IoMdHome } from "react-icons/io";
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -16,7 +17,7 @@ const Navbar = () => {
 				<ThemeToggle />
 			</div>
 
-			<nav className="flex gap-4 justify-between py-2 px-8 items-center fixed bottom-0 left-0 right-0 bg-primary-foreground shadow-lg rounded-tl-full rounded-tr-full lg:relative lg:rounded-none lg:shadow-none lg:bottom-0 lg:left-0 lg:right-0 border-t border-muted lg:border-b lg:border-t-0">
+			<nav className="flex gap-4 justify-between py-2 px-8 items-center fixed bottom-0 left-0 right-0 bg-secondary shadow rounded-tl-full rounded-tr-full lg:relative lg:rounded-none lg:shadow-none lg:bottom-0 lg:left-0 lg:right-0 border-t border-border lg:border-b lg:border-t-0">
 				{/* THE LOGO */}
 				<section className="hidden lg:block">
 					<Link href={"/"}>
@@ -75,6 +76,30 @@ const Navbar = () => {
 											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
 									}`}>
 									Evening
+								</span>
+							</Link>
+						</li>
+
+						<li className="lg:order-first relative group">
+							<Link
+								href="/"
+								className={`flex flex-col gap-3 items-center justify-center h-16 w-16 transition-all group ${
+									pathname === "/" ? "text-green-500" : "text-yellow-500"
+								}`}>
+								<IoMdHome
+									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
+										pathname === "/"
+											? "-translate-y-[35px] bg-background border-4 border-background lg:border-0 lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
+											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
+									}`}
+								/>
+								<span
+									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
+										pathname === "/"
+											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
+											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
+									}`}>
+									Home
 								</span>
 							</Link>
 						</li>
