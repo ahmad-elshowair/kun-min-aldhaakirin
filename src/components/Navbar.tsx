@@ -27,7 +27,7 @@ const Navbar = () => {
 
 				<section className={`${reemKufi.className} flex-1 flex justify-end`}>
 					<ul className="flex gap-10 w-full md:justify-around lg:w-auto">
-						<li className="relative">
+						<li className="relative group">
 							<Link
 								href="/morning"
 								className={`flex flex-col items-center justify-center h-16 w-16 transition-all group ${
@@ -37,20 +37,20 @@ const Navbar = () => {
 									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
 										pathname === "/morning"
 											? "-translate-y-[35px] bg-background lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0"
+											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
 									}`}
 								/>
 								<span
 									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
 										pathname === "/morning"
 											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5"
+											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
 									}`}>
 									Morning
 								</span>
 							</Link>
 						</li>
-						<li className="relative">
+						<li className="relative group">
 							<Link
 								href="/evening"
 								className={`flex flex-col items-center justify-center h-16 w-16 transition-all group ${
@@ -60,20 +60,20 @@ const Navbar = () => {
 									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
 										pathname === "/evening"
 											? "-translate-y-[35px] bg-background lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0"
+											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
 									}`}
 								/>
 								<span
 									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
 										pathname === "/evening"
 											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5"
+											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
 									}`}>
 									Evening
 								</span>
 							</Link>
 						</li>
-						<li className="relative">
+						<li className="relative group">
 							<Link
 								href="/prayer"
 								className={`flex flex-col gap-3 items-center justify-center h-16 w-16 transition-all group  ${
@@ -83,20 +83,20 @@ const Navbar = () => {
 									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
 										pathname === "/prayer"
 											? "-translate-y-[35px] bg-background lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0"
+											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
 									}`}
 								/>
 								<span
 									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
 										pathname === "/prayer"
 											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5"
+											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:lg:opacity-100"
 									}`}>
 									Prayer
 								</span>
 							</Link>
 						</li>
-						<li className="relative">
+						<li className="relative group">
 							<Link
 								href="/sleeping"
 								className={`flex flex-col gap-3 items-center justify-center h-16 w-16 transition-all group ${
@@ -108,14 +108,14 @@ const Navbar = () => {
 									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
 										pathname === "/sleeping"
 											? "-translate-y-[35px] bg-background lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0"
+											: "lg:-translate-y-10 lg:opacity-0	group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
 									}`}
 								/>
 								<span
 									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
 										pathname === "/sleeping"
 											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5"
+											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
 									}`}>
 									Sleeping
 								</span>
