@@ -1,23 +1,17 @@
 "use client";
+import NavLinks from "@/components/NavLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { reemKufi } from "@/lib/fonts";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
-import { FaPersonPraying } from "react-icons/fa6";
-import { GiNightSleep } from "react-icons/gi";
-import { IoMdHome } from "react-icons/io";
 
 const Navbar = () => {
-	const pathname = usePathname();
-
 	return (
 		<>
 			<div className="fixed top-2 right-8 z-50 block lg:hidden">
 				<ThemeToggle />
 			</div>
 
-			<nav className="flex gap-4 justify-between py-2 px-8 items-center fixed bottom-0 left-0 right-0 bg-secondary shadow rounded-tl-full rounded-tr-full lg:relative lg:rounded-none lg:shadow-none lg:bottom-0 lg:left-0 lg:right-0 border-t border-border lg:border-b lg:border-t-0">
+			<nav className="flex gap-2 sm:gap-4 justify-between py-1 px-4 sm:px-8 items-center fixed bottom-0 lg:top-0 lg:bottom-auto left-0 right-0 bg-navbar backdrop-blur-sm shadow rounded-tl-full rounded-tr-full lg:rounded-none lg:shadow-none lg:left-0 lg:right-0 border-t border-border lg:border-0 :after:content-[''] lg:after:absolute lg:after:bottom-0 lg:after:left-0 lg:after:right-0 lg:after:h-8 lg:after:bg-gradient-to-b lg:after:from-transparent lg:after:to-background lg:after:pointer-events-none z-40">
 				{/* THE LOGO */}
 				<section className="hidden lg:block">
 					<Link href={"/"}>
@@ -32,127 +26,7 @@ const Navbar = () => {
 				<section
 					className={`${reemKufi.className} flex-1 flex lg:justify-end items-center`}>
 					<ul className="flex gap-10 w-full justify-around lg:w-auto">
-						<li className="relative group">
-							<Link
-								href="/morning"
-								className={`flex flex-col items-center justify-center h-16 w-16 transition-all group ${
-									pathname === "/morning" ? "text-green-500" : "text-yellow-500"
-								}`}>
-								<BsFillSunriseFill
-									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
-										pathname === "/morning"
-											? "-translate-y-[35px] bg-background border-4 border-background lg:border-0 lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
-									}`}
-								/>
-								<span
-									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
-										pathname === "/morning"
-											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
-									}`}>
-									Morning
-								</span>
-							</Link>
-						</li>
-
-						<li className="relative group">
-							<Link
-								href="/evening"
-								className={`flex flex-col items-center justify-center h-16 w-16 transition-all group ${
-									pathname === "/evening" ? "text-green-500" : "text-yellow-500"
-								}`}>
-								<BsFillSunsetFill
-									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
-										pathname === "/evening"
-											? "-translate-y-[35px] bg-background border-4 border-background lg:border-0 lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
-									}`}
-								/>
-								<span
-									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
-										pathname === "/evening"
-											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
-									}`}>
-									Evening
-								</span>
-							</Link>
-						</li>
-
-						<li className="lg:order-first relative group">
-							<Link
-								href="/"
-								className={`flex flex-col gap-3 items-center justify-center h-16 w-16 transition-all group ${
-									pathname === "/" ? "text-green-500" : "text-yellow-500"
-								}`}>
-								<IoMdHome
-									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
-										pathname === "/"
-											? "-translate-y-[35px] bg-background border-4 border-background lg:border-0 lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
-									}`}
-								/>
-								<span
-									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
-										pathname === "/"
-											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
-									}`}>
-									Home
-								</span>
-							</Link>
-						</li>
-
-						<li className="relative group">
-							<Link
-								href="/prayer"
-								className={`flex flex-col gap-3 items-center justify-center h-16 w-16 transition-all group  ${
-									pathname === "/prayer" ? "text-green-500" : "text-yellow-500"
-								}`}>
-								<FaPersonPraying
-									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
-										pathname === "/prayer"
-											? "-translate-y-[35px] bg-background border-4 border-background lg:border-0 lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0 group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
-									}`}
-								/>
-								<span
-									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
-										pathname === "/prayer"
-											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
-									}`}>
-									Prayer
-								</span>
-							</Link>
-						</li>
-
-						<li className="relative group">
-							<Link
-								href="/sleeping"
-								className={`flex flex-col gap-3 items-center justify-center h-16 w-16 transition-all group ${
-									pathname === "/sleeping"
-										? "text-green-500"
-										: "text-yellow-500"
-								}`}>
-								<GiNightSleep
-									className={`text-xl w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
-										pathname === "/sleeping"
-											? "-translate-y-[35px] bg-background border-4 border-background lg:border-0 lg:translate-y-2 lg:bg-transparent lg:p-0 lg:opacity-100"
-											: "lg:-translate-y-10 lg:opacity-0	group-hover:-translate-y-[35px] group-hover:bg-background group-hover:lg:translate-y-2 group-hover:lg:bg-transparent group-hover:lg:p-0 group-hover:lg:opacity-100"
-									}`}
-								/>
-								<span
-									className={`text-md font-semibold mt-1 lg:mt-0 absolute lg:static bottom-1 transition-all duration-300 ${
-										pathname === "/sleeping"
-											? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
-											: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
-									}`}>
-									Sleeping
-								</span>
-							</Link>
-						</li>
+						<NavLinks />
 					</ul>
 				</section>
 

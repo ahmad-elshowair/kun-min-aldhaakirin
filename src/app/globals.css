@@ -5,6 +5,8 @@
 @layer base {
 	:root {
 		--background: 0 0% 100%;
+		--neumorphic-dark: 0 0% 83%;
+		--neumorphic-light: 0 0% 100%;
 		--foreground: 240 10% 3.9%;
 		--card: 0 0% 100%;
 		--card-foreground: 240 10% 3.9%;
@@ -32,6 +34,8 @@
 	}
 	.dark {
 		--background: 240 10% 12%;
+		--neumorphic-dark: 240 10% 8%;
+		--neumorphic-light: 240 10% 16%;
 		--foreground: 0 0% 98%;
 		--card: 240 10% 12%;
 		--card-foreground: 0 0% 98%;
@@ -64,5 +68,27 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+
+	@keyframes wave {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+
+	.bg-gradient {
+		@apply bg-gradient-to-b from-green-500/10 via-yellow-500/10 to-green-500/10 dark:from-green-300/10 dark:via-yellow-200/10 dark:to-green-300/10;
+	}
+	.bg-navbar {
+		@apply bg-gradient-to-r from-green-500/10 via-yellow-500/10 to-green-500/10 dark:from-green-300/10 dark:via-yellow-200/10 dark:to-green-300/10;
+	}
+
+	.neumorphic {
+		@apply bg-background border border-muted;
+		box-shadow: 5px 5px 5px hsl(var(--neumorphic-dark)),
+			-5px -5px 5px hsl(var(--neumorphic-light));
 	}
 }
