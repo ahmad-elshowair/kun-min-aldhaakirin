@@ -17,7 +17,7 @@ const Dhikr = () => {
 				Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is
 				born, Nor is there to Him any equivalent. (Quran 112)
 			</p>
-			<DhikrCounter maxCount={7} />
+			<DhikrCounter maxCount={1} />
 		</article>
 	);
 };

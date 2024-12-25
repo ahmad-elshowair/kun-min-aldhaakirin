@@ -1,12 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { IDhikrCounterProps } from "@/definitions";
+import { FC, useEffect, useState } from "react";
 import { BiReset } from "react-icons/bi";
-interface DhikrCounterProps {
-	maxCount: number;
-}
-const DhikrCounter = ({ maxCount }: DhikrCounterProps) => {
+
+const DhikrCounter: FC<IDhikrCounterProps> = ({ maxCount }) => {
 	const [count, setCount] = useState(0);
 	const [isVibrating, setIsVibrating] = useState(false);
 
