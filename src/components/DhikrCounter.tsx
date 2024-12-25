@@ -41,9 +41,9 @@ const DhikrCounter = ({ maxCount }: DhikrCounterProps) => {
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 1440 320"
-						className="absolute -top-20 left-0 w-full animate-wave z-10"
+						className="absolute bottom-0  left-0 right-0 w-full z-10"
 						preserveAspectRatio="none"
-						style={{ minWidth: "200%" }}>
+						style={{ transform: `translateY(${100 - waveFill}%)` }}>
 						<path
 							className="fill-[#22c55e]/15 dark:fill-[#4ade80]/15"
 							d="M0,160L48,165.3C96,171,192,181,288,176C384,171,480,149,576,149.3C672,149,768,171,864,160C960,149,1056,107,1152,101.3C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>

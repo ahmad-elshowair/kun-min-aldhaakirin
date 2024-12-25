@@ -17,8 +17,9 @@ const Mornings = () => {
 				</h1>
 				<p
 					className={`${reemKufi.className} text-sm text-muted-foreground px-10`}>
-					the best time to recite the &quot;Azkar&quot; (remembrances) of the
-					morning is between the Fajr prayer and sunrise
+					the best time to recite the{" "}
+					<em className="font-bold">morning Azkar</em>
+					is between the Fajr prayer and sunrise
 				</p>
 			</article>
 

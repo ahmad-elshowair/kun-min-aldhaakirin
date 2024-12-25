@@ -25,7 +25,7 @@ const Navbar = () => {
 				{/* THE NAV LINKS HERE */}
 				<section
 					className={`${reemKufi.className} flex-1 flex lg:justify-end items-center`}>
-					<ul className="flex gap-10 w-full justify-around lg:w-auto">
+					<ul className="flex gap-5 lg:gap-10 w-full justify-around lg:w-auto">
 						<NavLinks />
 					</ul>
 				</section>
