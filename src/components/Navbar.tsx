@@ -8,7 +8,7 @@ import Link from "next/link";
 const Navbar = () => {
 	return (
 		<>
-			<section className="fixed top-2 right-8 z-50 flex gap-2 lg:hidden">
+			<section className="fixed top-2 right-8 z-50 flex items-center justify-center gap-2 lg:hidden">
 				<ThemeToggle />
 				<LanguageToggle />
 			</section>
@@ -33,7 +33,7 @@ const Navbar = () => {
 				</section>
 
 				{/* THE THEME TOGGLER */}
-				<section className="hidden lg:flex gap-2">
+				<section className="hidden lg:flex items-center justify-center gap-2">
 					<ThemeToggle />
 					<LanguageToggle />
 				</section>

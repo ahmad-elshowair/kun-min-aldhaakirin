@@ -16,12 +16,12 @@ export interface LanguageOption {
   
   export const languageOptions: LanguageOption[] = [
 	{
-	  flag: "🇺🇸",
+	  flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/united-states.png",
 	  label: "English",
 	  value: "en",
 	},
 	{
-	  flag: "🇪🇬",
+	  flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/egypt.png",
 	  label: "العربية",
 	  value: "ar",
 	},
