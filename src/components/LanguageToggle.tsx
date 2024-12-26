@@ -31,11 +31,11 @@ export default function LanguageToggle() {
 				<Button
 					variant="outline"
 					size="sm"
-					className="relative w-8 h-9 border-0 p-0 overflow-hidden flex items-center justify-center">
+					className="relative w-8 h-9 border-0 p-0 overflow-hidden rounded-none flex  gap-0 items-center justify-center hover:bg-transparent focus:bg-transparent focus:ring-0 bg-transparent">
 					{languageOptions.map((option) => (
 						<div
 							key={option.value}
-							className={`absolute inset-0 transition-all flex items-center justify-center ${
+							className={` w-full h-full absolute inset-0 transition-all flex items-center justify-center ${
 								language === option.value
 									? "rotate-0 scale-100"
 									: "rotate-90 scale-0"
@@ -45,7 +45,7 @@ export default function LanguageToggle() {
 								alt={option.label}
 								fill
 								sizes="36px"
-								className="object-cover"
+								className="object-cover w-full h-full"
 							/>
 						</div>
 					))}

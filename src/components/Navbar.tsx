@@ -9,8 +9,8 @@ const Navbar = () => {
 	return (
 		<>
 			<section className="fixed top-2 right-8 z-50 flex items-center justify-center gap-2 lg:hidden">
-				<ThemeToggle />
 				<LanguageToggle />
+				<ThemeToggle />
 			</section>
 
 			<nav className="flex gap-2 sm:gap-4 justify-between py-1 px-4 sm:px-8 items-center fixed bottom-0 lg:top-0 lg:bottom-auto left-0 right-0 bg-navbar backdrop-blur-sm shadow rounded-tl-full rounded-tr-full lg:rounded-none lg:shadow-none lg:left-0 lg:right-0 border-t border-border lg:border-0 :after:content-[''] lg:after:absolute lg:after:bottom-0 lg:after:left-0 lg:after:right-0 lg:after:h-8 lg:after:bg-gradient-to-b lg:after:from-transparent lg:after:to-background lg:after:pointer-events-none z-40">
@@ -34,8 +34,8 @@ const Navbar = () => {
 
 				{/* THE THEME TOGGLER */}
 				<section className="hidden lg:flex items-center justify-center gap-2">
-					<ThemeToggle />
 					<LanguageToggle />
+					<ThemeToggle />
 				</section>
 			</nav>
 		</>

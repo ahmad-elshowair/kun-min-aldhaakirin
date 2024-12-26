@@ -22,7 +22,7 @@ export interface LanguageOption {
 	},
 	{
 	  flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/egypt.png",
-	  label: "العربية",
+	  label: "عربى",
 	  value: "ar",
 	},
   ];
