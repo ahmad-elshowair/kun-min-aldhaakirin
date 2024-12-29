@@ -12,17 +12,23 @@ export interface LanguageOption {
 	flag: string;
 	label: string;
 	value: TLanguage;
-  }
-  
-  export const languageOptions: LanguageOption[] = [
+}
+
+export const languageOptions: LanguageOption[] = [
 	{
-	  flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/united-states.png",
-	  label: "English",
-	  value: "en",
+		flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/united-states.png",
+		label: "English",
+		value: "en",
 	},
 	{
-	  flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/egypt.png",
-	  label: "عربى",
-	  value: "ar",
+		flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/egypt.png",
+		label: "عربى",
+		value: "ar",
 	},
-  ];
+];
+
+export type TimingType = "morning" | "evening" | "prayer" | "sleep";
+
+export interface TimingProps {
+	type: TimingType;
+}

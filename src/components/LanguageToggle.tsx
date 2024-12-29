@@ -22,7 +22,7 @@ export default function LanguageToggle() {
 	}, []);
 
 	if (!mounted) {
-		return <Skeleton className="h-8 w-8 rounded-md border border-border" />;
+		return <Skeleton className="h-9 w-9 rounded-full border border-border" />;
 	}
 
 	return (
@@ -31,7 +31,7 @@ export default function LanguageToggle() {
 				<Button
 					variant="outline"
 					size="sm"
-					className="relative w-8 h-9 border-0 p-0 overflow-hidden rounded-none flex  gap-0 items-center justify-center hover:bg-transparent focus:bg-transparent focus:ring-0 bg-transparent">
+					className="relative w-9 h-9 border-0 p-0 overflow-hidden rounded-full flex  gap-0 items-center justify-center hover:bg-transparent focus:bg-transparent focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent">
 					{languageOptions.map((option) => (
 						<div
 							key={option.value}

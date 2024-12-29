@@ -4,7 +4,7 @@
 
 @layer base {
 	:root {
-		--background: 0 0% 100%;
+		--background: 150 30% 96%;
 		--neumorphic-dark: 0 0% 83%;
 		--neumorphic-light: 0 0% 100%;
 		--foreground: 240 10% 3.9%;

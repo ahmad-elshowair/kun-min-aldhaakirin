@@ -1,3 +1,4 @@
+import TimingHeader from "@/components/TimingHeader";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,10 +9,8 @@ export const metadata: Metadata = {
 
 const Prayers = () => {
 	return (
-		<section>
-			<h1 className="text-4xl text-right font-bold text-green-500">
-				اذكار الصلاة{" "}
-			</h1>
+		<section className="w-full lg:w-1/2 flex flex-col items-center justify-center flex-grow mt-20 lg:mb-10 mb-20">
+			<TimingHeader type="prayer" />
 		</section>
 	);
 };
