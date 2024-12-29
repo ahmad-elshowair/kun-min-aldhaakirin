@@ -2,25 +2,57 @@
 import LanguageToggle from "@/components/LanguageToggle";
 import NavLinks from "@/components/NavLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { reemKufi } from "@/lib/fonts";
+import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
+	const { language } = useLanguage();
 	return (
 		<>
-			<section className="fixed top-2 right-8 z-50 flex items-center justify-center gap-2 lg:hidden">
-				<LanguageToggle />
-				<ThemeToggle />
+			{/* nav on small screens  */}
+
+			<section className="w-full flex flex-row items-center justify-between lg:hidden px-2 py-1 bg-navbar backdrop-blur-sm fixed top-0 z-50">
+				<Link
+					href="/"
+					className="flex self-center hover:scale-125 transition-all ease-in-out duration-300">
+					<Image
+						src={
+							language === "en"
+								? "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/English.png"
+								: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png"
+						}
+						alt="logo"
+						width={50}
+						height={50}
+						className="w-full h-full"
+					/>
+				</Link>
+				<section className="flex items-center gap-2">
+					<LanguageToggle />
+					<ThemeToggle />
+				</section>
 			</section>
 
+			{/* nav on large screens  */}
 			<nav className="flex gap-2 sm:gap-4 justify-between py-1 px-4 sm:px-8 items-center fixed bottom-0 lg:top-0 lg:bottom-auto left-0 right-0 bg-navbar backdrop-blur-sm shadow rounded-tl-full rounded-tr-full lg:rounded-none lg:shadow-none lg:left-0 lg:right-0 border-t border-border lg:border-0 :after:content-[''] lg:after:absolute lg:after:bottom-0 lg:after:left-0 lg:after:right-0 lg:after:h-8 lg:after:bg-gradient-to-b lg:after:from-transparent lg:after:to-background lg:after:pointer-events-none z-40">
 				{/* THE LOGO */}
-				<section className="hidden lg:block">
-					<Link href={"/"}>
-						<span
-							className={`${reemKufi.className} text-2xl font-bold text-green-500`}>
-							Kun Min Aldhaakirin
-						</span>
+				<section className="hidden lg:flex">
+					<Link
+						href={"/"}
+						className="flex items-center hover:scale-125 transition-all ease-in-out duration-300">
+						<Image
+							src={
+								language === "en"
+									? "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/English.png"
+									: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png"
+							}
+							alt="logo"
+							width={75}
+							height={70}
+							className="w-[75px] h-[70px]"
+						/>
 					</Link>
 				</section>
 
