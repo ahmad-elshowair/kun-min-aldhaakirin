@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
@@ -6,31 +7,32 @@ import { GiNightSleep } from "react-icons/gi";
 import { IoMdHome } from "react-icons/io";
 const NavLinks = () => {
 	const pathname = usePathname();
+	const { language } = useLanguage();
 
 	const links = [
 		{
 			href: "/",
-			label: "Home",
+			label:{en: "Home", ar: "الرئيسية"},
 			icon: IoMdHome,
 		},
 		{
 			href: "/morning",
-			label: "Morning",
+			label: 	{en: "Morning", ar: "الصباح"},
 			icon: BsFillSunriseFill,
 		},
 		{
 			href: "/evening",
-			label: "Evening",
+			label: {en: "Evening", ar: "المساء"},
 			icon: BsFillSunsetFill,
 		},
 		{
 			href: "/prayer",
-			label: "Prayer",
+			label: {en:"Prayer", ar: "الصلاة"},
 			icon: FaPersonPraying,
 		},
 		{
 			href: "/sleeping",
-			label: "Sleeping",
+			label: {en:"Sleeping", ar: "النوم"},
 			icon: GiNightSleep,
 		},
 	];
@@ -40,9 +42,9 @@ const NavLinks = () => {
 				<li className="relative group" key={link.href}>
 					<Link
 						href={link.href}
-						className={`flex flex-col gap-1 sm:gap-2 items-center justify-center h-12 w-12 sm:h-14 sm:w-14 transition-all group ${
-							pathname === link.href ? "text-green-500" : "text-yellow-500"
-						}`}>
+						className={`flex flex-col gap-1 items-center justify-center h-12 w-12 sm:h-14 sm:w-14 transition-all group ${
+							pathname === link.href ? "text-green-500" : "text-yellow-500"} ${language === "ar" ? "text-right sm:gap-4" : "text-left sm:gap-3"}
+					`}>
 						<link.icon
 							className={`text-base sm:text-lg w-full h-full transition-transform duration-500 relative rounded-full p-1 ${
 								pathname === link.href
@@ -56,7 +58,7 @@ const NavLinks = () => {
 									? "opacity-100 translate-y-0 lg:-translate-y-2 lg:scale-110"
 									: "opacity-0 translate-y-1 lg:opacity-100 lg:-translate-y-5 group-hover:translate-y-2 group-hover:lg:-translate-y-2 group-hover:lg:scale-110 group-hover:opacity-100"
 							}`}>
-							{link.label}
+							{language === "ar" ? link.label.ar: link.label.en}
 						</span>
 					</Link>
 				</li>
