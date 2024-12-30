@@ -1,14 +1,17 @@
-import { reemKufi } from "@/lib/fonts";
-
 export default function Home() {
 	return (
-		<section className="w-full">
-			<header className="flex justify-center items-center h-[calc(100vh-85px)]">
-				<h1
-					className={`${reemKufi.className} text-4xl md:text-6xl lg:text-8xl text-right font-bold text-green-500`}>
-					كن من الذاكرين
-				</h1>
-			</header>
+		<section className="w-full min-h-screen flex items-center justify-center bg-green-200 dark:bg-black">
+			<video
+				controls
+				controlsList="nodownload noremoteplayback"
+				preload="auto"
+				className="w-full h-full max-h-screen object-contain">
+				<source
+					src="https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/videos/video%20kun%20min%20aldhaakirin.mp4?t=2024-12-30T01%3A22%3A36.717Z"
+					type="video/mp4"
+				/>
+				Your browser does not support the video tag.
+			</video>
 		</section>
 	);
 }
