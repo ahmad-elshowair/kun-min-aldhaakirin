@@ -1,20 +1,20 @@
 export type TLanguage = "en" | "ar";
 
+export interface ILanguageOption {
+	flag: string;
+	label: string;
+	value: TLanguage;
+}
+
 export interface IDhikrCounterProps {
-	maxCount: number;
+	maxCount?: number;
 }
 export interface ILanguageContextType {
 	language: TLanguage;
 	setLanguage: (language: TLanguage) => void;
 }
 
-export interface LanguageOption {
-	flag: string;
-	label: string;
-	value: TLanguage;
-}
-
-export const languageOptions: LanguageOption[] = [
+export const languageOptions: ILanguageOption[] = [
 	{
 		flag: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/united-states.png",
 		label: "English",
@@ -27,8 +27,19 @@ export const languageOptions: LanguageOption[] = [
 	},
 ];
 
-export type TimingType = "morning" | "evening" | "prayer" | "sleep";
+export type ITimingType = "morning" | "evening" | "prayer" | "sleep";
 
-export interface TimingProps {
-	type: TimingType;
+export interface ITimingProps {
+	type: ITimingType;
 }
+
+export type TDhikr = {
+	dhikr_id?: string;
+	dhikr?: string;
+	translation?: string;
+	transliteration?: string;
+	bless?: string;
+	repeat?: number;
+};
+
+export type TDhikrProps = TDhikr;

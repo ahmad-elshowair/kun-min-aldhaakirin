@@ -1,23 +1,39 @@
+"use client";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { TDhikrProps } from "@/definitions";
 import { reemKufi } from "@/lib/fonts";
+import { FC } from "react";
 import DhikrCounter from "./DhikrCounter";
 
-const Dhikr = () => {
+const Dhikr: FC<TDhikrProps> = ({
+	dhikr,
+	translation,
+	transliteration,
+	repeat,
+	bless,
+}) => {
+	const { language } = useLanguage();
 	return (
 		<article className="p-4 neumorphic rounded-[33px] flex flex-col gap-5 flex-grow">
-			<p className={`${reemKufi.className} font-bold`}>
-				Bismillahir Rahmanir Raheem. Qul Huwa Allahu Ahad. Allahus-Samad. Lam
-				yalid wa lam yoolad. Wa lam yakun lahu kufuwan ahad.
-			</p>
 			<p
-				className={`${reemKufi.className} text-xs text-right text-muted-foreground `}>
-				من قالها حين يصبح وحين يمسى كفته من كل شىء (الإخلاص والمعوذتين).
+				className={`${reemKufi.className} font-bold text-orange-400 ${
+					language === "ar" && "text-right"
+				}`}>
+				{language === "ar" ? dhikr : transliteration}
 			</p>
-			<p className={`${reemKufi.className} text-sm`}>
-				In the name of Allah, the Most Gracious, the Most Merciful. Say, He is
-				Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is
-				born, Nor is there to Him any equivalent. (Quran 112)
-			</p>
-			<DhikrCounter maxCount={1} />
+			{bless && language === "ar" && (
+				<p
+					className={`${reemKufi.className} text-xs text-right text-muted-foreground `}>
+					{bless}
+				</p>
+			)}
+			{language === "en" && (
+				<p
+					className={`${reemKufi.className} text-sm text-green-500 font-semibold`}>
+					{translation}
+				</p>
+			)}
+			<DhikrCounter maxCount={repeat} />
 		</article>
 	);
 };

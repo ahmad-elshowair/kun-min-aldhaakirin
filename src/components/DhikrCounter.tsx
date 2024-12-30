@@ -20,12 +20,12 @@ const DhikrCounter: FC<IDhikrCounterProps> = ({ maxCount }) => {
 
 	const handleIncrement = (e: React.MouseEvent) => {
 		e.stopPropagation();
-		if (count < maxCount) {
+		if (count < maxCount!) {
 			setCount((prev) => prev + 1);
 			setIsVibrating(true);
 		}
 	};
-	const waveFill = (count / maxCount) * 100;
+	const waveFill = (count / maxCount!) * 100;
 
 	return (
 		<div
