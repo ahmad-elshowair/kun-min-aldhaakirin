@@ -1,6 +1,6 @@
 "use client";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { TimingProps } from "@/definitions";
+import { ITimingProps } from "@/definitions";
 import { reemKufi } from "@/lib/fonts";
 import { FC } from "react";
 
@@ -51,7 +51,7 @@ const messages = {
 	},
 };
 
-const TimingHeader: FC<TimingProps> = ({ type }) => {
+const TimingHeader: FC<ITimingProps> = ({ type }) => {
 	const { language } = useLanguage();
 	const message = messages[language][type];
 
