@@ -27,10 +27,10 @@ export const languageOptions: ILanguageOption[] = [
 	},
 ];
 
-export type ITimingType = "morning" | "evening" | "prayer" | "sleep";
+export type TTimingType = "morning" | "evening" | "prayer" | "sleep";
 
 export interface ITimingProps {
-	type: ITimingType;
+	type: TTimingType;
 }
 
 export type TDhikr = {
@@ -43,3 +43,7 @@ export type TDhikr = {
 };
 
 export type TDhikrProps = TDhikr;
+
+export interface IDhikrListProps {
+	type?: TTimingType;
+}
