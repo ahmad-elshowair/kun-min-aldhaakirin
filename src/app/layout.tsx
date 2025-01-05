@@ -14,18 +14,18 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{
-				url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+				url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
 				sizes: "32x32",
 				type: "image/png",
 			},
 			{
-				url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+				url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
 				sizes: "16x16",
 				type: "image/png",
 			},
 		],
 		apple: {
-			url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+			url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
 			sizes: "180x180",
 			type: "image/png",
 		},
