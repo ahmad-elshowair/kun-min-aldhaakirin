@@ -10,6 +10,26 @@ export const metadata: Metadata = {
 	title: "Kun Min Aldhaakirin",
 	description:
 		"Kun Min Aldhaakirin (كن من الذاكرين) is your companion for daily Islamic remembrance, featuring morning and evening azkar, prayers after salah, and other essential supplications. Join the ranks of those who remember Allah throughout their day.",
+	manifest: "/site.webmanifest",
+	icons: {
+		icon: [
+			{
+				url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+				sizes: "32x32",
+				type: "image/png",
+			},
+			{
+				url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+				sizes: "16x16",
+				type: "image/png",
+			},
+		],
+		apple: {
+			url: "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+			sizes: "180x180",
+			type: "image/png",
+		},
+	},
 };
 
 export default function RootLayout({

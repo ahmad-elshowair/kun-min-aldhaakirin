@@ -1,0 +1,21 @@
+{
+	"name": "Kun Min Aldhaakirin",
+	"short_name": "Aldhaakirin",
+	"description": "Your companion for daily Islamic remembrance",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#16a34a",
+	"icons": [
+		{
+			"src": "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/kun%20min%20althaakirin%20favicon-bg.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
