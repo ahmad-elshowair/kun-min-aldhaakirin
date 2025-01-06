@@ -25,7 +25,7 @@ const Evenings = () => {
 						))}
 					</section>
 				}>
-				<DhikrList />
+				<DhikrList type="evening" />
 			</Suspense>
 		</section>
 	);
