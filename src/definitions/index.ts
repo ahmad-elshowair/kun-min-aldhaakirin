@@ -40,10 +40,17 @@ export type TDhikr = {
 	transliteration?: string;
 	bless?: string;
 	repeat?: number;
+	audio?: string;
 };
 
 export type TDhikrProps = TDhikr;
 
 export interface IDhikrListProps {
 	type?: TTimingType;
+}
+
+export interface BlessModalProps {
+	isOpen: boolean;
+	onOpenChange: (isOpen: boolean) => void;
+	bless?: string;
 }
