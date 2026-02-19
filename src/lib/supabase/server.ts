@@ -23,3 +23,14 @@ export const createServerSupabaseClient = async () => {
     },
   });
 };
+
+export const createStaticSupabaseClient = () => {
+  return createServerClient(configs.supabaseUrl, configs.supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return [];
+      },
+      setAll() {},
+    },
+  });
+};

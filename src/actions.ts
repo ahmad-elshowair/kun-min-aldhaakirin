@@ -1,11 +1,11 @@
 "use server";
 
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createStaticSupabaseClient } from "@/lib/supabase/server";
 import { TDhikr } from "@/definitions";
 
 export const fetchAzkarByType = async (typeName: string): Promise<TDhikr[]> => {
   try {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createStaticSupabaseClient();
 
     const { data, error } = await supabase.rpc("fetch_adhkar_by_type", {
       type_name: typeName,
