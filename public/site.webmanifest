@@ -1,21 +1,21 @@
 {
-	"name": "Kun Min Aldhaakirin",
-	"short_name": "Aldhaakirin",
-	"description": "Your companion for daily Islamic remembrance",
-	"start_url": "/",
-	"display": "standalone",
-	"background_color": "#ffffff",
-	"theme_color": "#16a34a",
-	"icons": [
-		{
-			"src": "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "https://ioytezgkjmzpfcwaxqcj.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
-			"sizes": "512x512",
-			"type": "image/png"
-		}
-	]
+  "name": "Kun Min Aldhaakirin",
+  "short_name": "Aldhaakirin",
+  "description": "Your companion for daily Islamic remembrance",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "icons": [
+    {
+      "src": "https://tbjhrsvkudeopmkhsiqh.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://tbjhrsvkudeopmkhsiqh.supabase.co/storage/v1/object/public/kun-min-aldhaakirin/images/fav%20icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
