@@ -3,6 +3,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { ITimingProps } from "@/definitions";
 import { reemKufi } from "@/lib/fonts";
 import { FC } from "react";
+import AudioPlayer from "./AudioPlayer";
+import configs from "@/configs";
 
 const messages = {
 	en: {
@@ -51,18 +53,32 @@ const messages = {
 	},
 };
 
+const typeToAudioFile: Record<string, string> = {
+	evening: "Evening Adhkar.mp3",
+	morning: "Morning Adhkar.mp3", // Assuming these exist too
+};
+
 const TimingHeader: FC<ITimingProps> = ({ type }) => {
 	const { language } = useLanguage();
 	const message = messages[language][type];
+	const audioFile = typeToAudioFile[type];
+	const audioUrl = audioFile ? configs.getAudioUrl(`${type}s`, audioFile) : null;
 
 	return (
 		<article className="w-full flex flex-col gap-2 items-center justify-center my-5">
 			<p
-				className={`${reemKufi.className} text-base md:text-md px-5 lg:px-10 dark:text-green-500 text-green-800`}>
+				className={`${reemKufi.className} text-base md:text-md px-5 lg:px-10 dark:text-green-500 text-green-800 text-center`}>
 				<span>{message.pre} </span>
 				<span className="font-bold"> {message.emphasis} </span>
 				<span> {message.post}</span>
 			</p>
+			
+			{audioUrl && (
+				<AudioPlayer 
+					url={audioUrl} 
+					title={language === "ar" ? "استمع للكل" : "Listen All"} 
+				/>
+			)}
 		</article>
 	);
 };
