@@ -16,8 +16,8 @@ const DhikrList: FC<IDhikrListProps> = async ({ type = "morning" }) => {
 
   return (
     <section className="w-full px-5 flex flex-col gap-5">
-      {response.map((dhikr) => (
-        <Dhikr key={dhikr.dhikr_id} {...dhikr} />
+      {response.map((dhikr, index) => (
+        <Dhikr key={dhikr.dhikr_id || `dhikr-${index}`} {...dhikr} />
       ))}
     </section>
   );
