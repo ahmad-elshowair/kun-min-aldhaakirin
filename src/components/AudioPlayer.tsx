@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,15 +10,24 @@ interface AudioPlayerProps {
   title?: string;
 }
 
+// ── WAVEFORM DATA (SIMULATED) ──────────────────────────────────────
+const WAVEFORM_SAMPLES = 100;
+// Fixed pattern for visual consistency
+const WAVE_PATTERN = [
+  30, 45, 60, 40, 25, 35, 55, 75, 50, 30, 40, 65, 85, 60, 40, 50, 70, 45, 35,
+  55, 80, 65, 40, 30, 50, 75, 60, 45, 35, 55, 70, 50, 35, 45, 65, 50, 40, 30,
+  25, 20, 45, 35, 55, 70, 50, 35, 45, 65, 50, 40, 30, 25, 20, 45, 35, 55, 70,
+];
+
 // ── AUDIO PLAYER ─────────────────────────────────────────────
 export default function AudioPlayer({ url, title }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const progressBarRef = useRef<HTMLDivElement>(null);
 
   // ── MOUNT EFFECT ─────────────────────────────────────────────
   useEffect(() => {
@@ -67,11 +76,16 @@ export default function AudioPlayer({ url, title }: AudioPlayerProps) {
   };
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (progressBarRef.current && audioRef.current && audioRef.current.duration) {
+    if (
+      progressBarRef.current &&
+      audioRef.current &&
+      audioRef.current.duration
+    ) {
       const rect = progressBarRef.current.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const progressPercent = clickX / rect.width;
-      audioRef.current.currentTime = progressPercent * audioRef.current.duration;
+      audioRef.current.currentTime =
+        progressPercent * audioRef.current.duration;
     }
   };
 
@@ -103,7 +117,10 @@ export default function AudioPlayer({ url, title }: AudioPlayerProps) {
   if (!mounted) return null;
 
   return (
-    <div className="w-full max-w-2xl mx-auto neumorphic rounded-[33px] p-5 flex flex-col md:flex-row items-center gap-5 transition-all">
+    <div className="w-full max-w-2xl mx-auto relative overflow-hidden neumorphic rounded-[33px] p-6 transition-all group shadow-2xl">
+      {/* ── BACKGROUND GLASS EFFECT ─── */}
+      <div className="absolute inset-0 bg-white/5 dark:bg-black/20 backdrop-blur-md -z-10 group-hover:backdrop-blur-lg transition-all" />
+
       {/* ── THE AUDIO ELEMENT ─── */}
       <audio
         ref={audioRef}
@@ -120,67 +137,68 @@ export default function AudioPlayer({ url, title }: AudioPlayerProps) {
         onError={handleError}
       />
 
-      {/* ── THE AUDIO PLAYER CONTROLS ─── */}
-      <div className="flex items-center gap-4 w-full md:w-auto">
-        {/* ── PLAY/PAUSE BUTTON ─── */}
-        <button
-          onClick={togglePlay}
-          className={cn(
-            "w-14 h-14 rounded-2xl flex items-center justify-center transition-all transform hover:scale-105 active:scale-95 shadow-lg",
-            "bg-orange-400 hover:bg-orange-500 text-white",
-            isLoading && "opacity-80",
-          )}
-          aria-label={isPlaying ? "Pause" : "Play"}
-        >
-          {isLoading ? (
-            <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin" />
-          ) : isPlaying ? (
-            <Pause fill="currentColor" size={28} />
-          ) : (
-            <Play fill="currentColor" size={28} className="ml-1" />
-          )}
-        </button>
+      <div className="flex flex-col items-center gap-6 relative z-10 sm:flex-row sm:justify-center sm:gap-4">
+        {/* ── CONTROLS ─── */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={reset}
+            className="p-3 text-zinc-400 hover:text-orange-500 transition-all hover:bg-orange-500/10 rounded-full"
+            aria-label="Restart"
+          >
+            <RotateCcw size={22} strokeWidth={2.5} />
+          </button>
 
-        {/* ── AUDIO PLAYER TITLE ─── */}
-        <div className="flex flex-col flex-grow md:min-w-[150px]">
-          <h3 className="text-lg font-bold text-zinc-800 dark:text-zinc-100 uppercase tracking-wide">
-            {title || "Listen All"}
-          </h3>
+          <button
+            onClick={togglePlay}
+            className={cn(
+              "w-16 h-16 rounded-full flex items-center justify-center transition-all transform hover:scale-105 active:scale-95 shadow-xl",
+              "bg-orange-500 text-white ring-4 ring-orange-500/20",
+              isLoading && "animate-pulse",
+            )}
+            aria-label={isPlaying ? "Pause" : "Play"}
+          >
+            {isLoading ? (
+              <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin" />
+            ) : isPlaying ? (
+              <Pause fill="currentColor" size={32} />
+            ) : (
+              <Play fill="currentColor" size={32} className="ml-1" />
+            )}
+          </button>
+
+          <button
+            onClick={toggleMute}
+            className="p-3 text-zinc-400 hover:text-orange-500 transition-all hover:bg-orange-500/10 rounded-full"
+            aria-label={isMuted ? "Unmute" : "Mute"}
+          >
+            {isMuted ? (
+              <VolumeX size={24} strokeWidth={2.5} />
+            ) : (
+              <Volume2 size={24} strokeWidth={2.5} />
+            )}
+          </button>
         </div>
       </div>
 
-      {/* ── THE AUDIO PLAYER PROGRESS ─── */}
-      <div className="flex flex-col flex-grow w-full gap-2">
-        <div
-          ref={progressBarRef}
-          onClick={handleSeek}
-          className="w-full h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden shadow-inner cursor-pointer"
-        >
-          <div
-            className="h-full bg-orange-400 transition-all duration-300 shadow-[0_0_10px_rgba(251,146,60,0.5)]"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
-
-      <div className="flex items-center gap-3 border-t md:border-t-0 md:border-l border-zinc-100 dark:border-zinc-800 pt-3 md:pt-0 md:pl-5 w-full md:w-auto justify-center">
-        {/* ── RESTART BUTTON ─── */}
-        <button
-          onClick={reset}
-          className="p-3 text-zinc-400 hover:text-orange-400 transition-all hover:bg-orange-50 dark:hover:bg-zinc-800 rounded-xl"
-          title="Restart"
-        >
-          <RotateCcw size={20} />
-        </button>
-
-        {/* ── MUTE BUTTON ─── */}
-        <button
-          onClick={toggleMute}
-          className="p-3 text-zinc-400 hover:text-orange-400 transition-all hover:bg-orange-50 dark:hover:bg-zinc-800 rounded-xl"
-          title={isMuted ? "Unmute" : "Mute"}
-        >
-          {isMuted ? <VolumeX size={22} /> : <Volume2 size={22} />}
-        </button>
+      {/* ── WAVEFORM SEEKER ─── */}
+      <div
+        className="relative h-16 w-full flex items-end gap-[3px] sm:gap-1 px-1 cursor-pointer"
+        ref={progressBarRef}
+        onClick={handleSeek}
+      >
+        {WAVE_PATTERN.map((height, i) => {
+          const isActive = (i / WAVEFORM_SAMPLES) * 100 <= progress;
+          return (
+            <div
+              key={i}
+              className={cn(
+                "flex-1 rounded-full bg-zinc-700 transition-all duration-300",
+                isActive ? "bg-orange-500" : "dark:opacity-40 opacity-20",
+              )}
+              style={{ height: `${height}%` }}
+            />
+          );
+        })}
       </div>
     </div>
   );
