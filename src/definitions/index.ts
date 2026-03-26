@@ -11,10 +11,6 @@ export interface ILanguageOption {
 export interface IDhikrCounterProps {
   maxCount?: number;
 }
-export interface ILanguageContextType {
-  language: TLanguage;
-  setLanguage: (language: TLanguage) => void;
-}
 
 const storageBase = `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin`;
 
