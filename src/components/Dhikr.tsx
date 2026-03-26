@@ -17,10 +17,12 @@ const Dhikr: FC<TDhikrProps> = ({
   bless,
   audio,
 }) => {
-  const { language } = useLanguageStore();
+  const { language, _hasHydrated } = useLanguageStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  if (!_hasHydrated) return null;
 
   const handleAudioToggle = () => {
     if (audioRef.current) {

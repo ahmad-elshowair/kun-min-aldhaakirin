@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 
 // ── NAVBAR ─────────────────────────────────────────────
 const Navbar = () => {
-  const { language } = useLanguageStore();
+  const { language, _hasHydrated } = useLanguageStore();
   const pathname = usePathname();
   return (
     <>
@@ -26,9 +26,9 @@ const Navbar = () => {
         >
           <Image
             src={
-              language === "en"
-                ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
-                : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+              !_hasHydrated || language === "ar"
+                ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+                : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
             }
             alt="logo"
             width={50}
@@ -58,9 +58,9 @@ const Navbar = () => {
           >
             <Image
               src={
-                language === "en"
-                  ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
-                  : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+                !_hasHydrated || language === "ar"
+                  ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+                  : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
               }
               alt="logo"
               width={75}

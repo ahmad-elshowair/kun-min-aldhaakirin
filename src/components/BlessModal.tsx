@@ -13,7 +13,10 @@ import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
 const BlessModal = ({ isOpen, onOpenChange, bless }: BlessModalProps) => {
-  const { language } = useLanguageStore();
+  const { language, _hasHydrated } = useLanguageStore();
+
+  if (!_hasHydrated) return null;
+
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">

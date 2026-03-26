@@ -5,7 +5,9 @@ import type { Metadata } from "next";
 import { geistMono, geistSans } from "@/lib/fonts";
 import "./globals.css";
 import configs from "@/configs";
+import LanguageInitializer from "@/components/LanguageInitializer";
 
+// ── METADATA ─────────────────────────────────────────────
 export const metadata: Metadata = {
   title: "Kun Min Aldhaakirin",
   description:
@@ -38,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
@@ -49,6 +51,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <LanguageInitializer />
           <Navbar />
           <main className="flex flex-col items-center justify-center flex-grow">
             {children}
