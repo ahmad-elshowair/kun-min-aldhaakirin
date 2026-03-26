@@ -8,6 +8,7 @@ import { cairo } from "@/lib/fonts";
 import { FC, useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
 
+// ── DHIKR ─────────────────────────────────────────────
 const Dhikr: FC<TDhikrProps> = ({
   dhikr,
   translation,

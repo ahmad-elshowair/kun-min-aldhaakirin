@@ -5,10 +5,13 @@ import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
 import { FaPersonPraying } from "react-icons/fa6";
 import { GiNightSleep } from "react-icons/gi";
 import { IoMdHome } from "react-icons/io";
+
+// ── NAV LINKS ─────────────────────────────────────────────
 const NavLinks = () => {
   const pathname = usePathname();
   const { language } = useLanguageStore();
 
+  // ── LINKS ─────────────────────────────────────────────
   const links = [
     {
       href: "/",
@@ -36,6 +39,7 @@ const NavLinks = () => {
       icon: GiNightSleep,
     },
   ];
+
   return (
     <>
       {links.map((link) => (

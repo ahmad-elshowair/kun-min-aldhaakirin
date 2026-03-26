@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// ── NAVBAR ─────────────────────────────────────────────
 const Navbar = () => {
   const { language } = useLanguageStore();
   const pathname = usePathname();
