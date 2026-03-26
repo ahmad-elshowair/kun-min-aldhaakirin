@@ -3,14 +3,14 @@ import LanguageToggle from "@/components/LanguageToggle";
 import NavLinks from "@/components/NavLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import configs from "@/configs";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { reemKufi } from "@/lib/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const { language } = useLanguage();
+  const { language } = useLanguageStore();
   const pathname = usePathname();
   return (
     <>

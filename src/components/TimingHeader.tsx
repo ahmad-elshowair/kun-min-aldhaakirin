@@ -1,5 +1,5 @@
 "use client";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { ITimingProps } from "@/definitions";
 import { FC } from "react";
 import AudioPlayer from "./AudioPlayer";
@@ -21,7 +21,7 @@ const typeToTitle: Record<string, { ar: string; en: string }> = {
 
 // ── TIMING HEADER ─────────────────────────────────────────────
 const TimingHeader: FC<ITimingProps> = ({ type }) => {
-  const { language } = useLanguage();
+  const { language } = useLanguageStore();
 
   const title = typeToTitle[type];
   const audioFile = typeToAudioFile[type];

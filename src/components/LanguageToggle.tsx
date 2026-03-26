@@ -8,13 +8,13 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { languageOptions } from "@/definitions";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function LanguageToggle() {
-	const { language, setLanguage } = useLanguage();
+	const { language, setLanguage } = useLanguageStore();
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
