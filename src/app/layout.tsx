@@ -2,11 +2,12 @@ import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 
-import { LanguageProvider } from "@/contexts/LanguageContext";
 import { geistMono, geistSans } from "@/lib/fonts";
 import "./globals.css";
 import configs from "@/configs";
+import LanguageInitializer from "@/components/LanguageInitializer";
 
+// ── METADATA ─────────────────────────────────────────────
 export const metadata: Metadata = {
   title: "Kun Min Aldhaakirin",
   description:
@@ -39,24 +40,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <LanguageProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            <main className="flex flex-col items-center justify-center flex-grow">
-              {children}
-            </main>
-          </ThemeProvider>
-        </LanguageProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LanguageInitializer />
+          <Navbar />
+          <main className="flex flex-col items-center justify-center flex-grow">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

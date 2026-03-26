@@ -2,12 +2,13 @@
 import BlessModal from "@/components/BlessModal";
 import DhikrCounter from "@/components/DhikrCounter";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { TDhikrProps } from "@/definitions";
 import { cairo } from "@/lib/fonts";
 import { FC, useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
 
+// ── DHIKR ─────────────────────────────────────────────
 const Dhikr: FC<TDhikrProps> = ({
   dhikr,
   translation,
@@ -16,10 +17,12 @@ const Dhikr: FC<TDhikrProps> = ({
   bless,
   audio,
 }) => {
-  const { language } = useLanguage();
+  const { language, _hasHydrated } = useLanguageStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  if (!_hasHydrated) return null;
 
   const handleAudioToggle = () => {
     if (audioRef.current) {

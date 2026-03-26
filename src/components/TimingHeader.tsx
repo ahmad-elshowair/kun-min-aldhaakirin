@@ -1,5 +1,5 @@
 "use client";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { ITimingProps } from "@/definitions";
 import { FC } from "react";
 import AudioPlayer from "./AudioPlayer";
@@ -21,13 +21,15 @@ const typeToTitle: Record<string, { ar: string; en: string }> = {
 
 // ── TIMING HEADER ─────────────────────────────────────────────
 const TimingHeader: FC<ITimingProps> = ({ type }) => {
-  const { language } = useLanguage();
+  const { language, _hasHydrated } = useLanguageStore();
 
   const title = typeToTitle[type];
   const audioFile = typeToAudioFile[type];
   const audioUrl = audioFile
     ? configs.getAudioUrl(`${type}s`, audioFile)
     : null;
+
+  if (!_hasHydrated) return null;
 
   return (
     <article className="w-full flex flex-col gap-5 items-center justify-center my-5 px-5">

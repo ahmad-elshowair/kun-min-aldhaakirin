@@ -3,14 +3,15 @@ import LanguageToggle from "@/components/LanguageToggle";
 import NavLinks from "@/components/NavLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import configs from "@/configs";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { reemKufi } from "@/lib/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// ── NAVBAR ─────────────────────────────────────────────
 const Navbar = () => {
-  const { language } = useLanguage();
+  const { language, _hasHydrated } = useLanguageStore();
   const pathname = usePathname();
   return (
     <>
@@ -25,9 +26,9 @@ const Navbar = () => {
         >
           <Image
             src={
-              language === "en"
-                ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
-                : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+              !_hasHydrated || language === "ar"
+                ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+                : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
             }
             alt="logo"
             width={50}
@@ -57,9 +58,9 @@ const Navbar = () => {
           >
             <Image
               src={
-                language === "en"
-                  ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
-                  : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+                !_hasHydrated || language === "ar"
+                  ? `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/Arabic.png`
+                  : `${configs.supabaseUrl}/storage/v1/object/public/kun-min-aldhaakirin/images/English.png`
               }
               alt="logo"
               width={75}
