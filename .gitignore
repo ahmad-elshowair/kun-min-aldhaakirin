@@ -44,3 +44,7 @@ next-env.d.ts
 .agent
 .specify
 /specs
+
+# generated service worker
+/public/sw.js*
+/public/swe-worker*
