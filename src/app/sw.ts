@@ -24,7 +24,10 @@ const serwist = new Serwist({
   runtimeCaching: [
     {
       // audio files live in the supabase bucket - save each one for 30 days
-      matcher: ({ url }) => url.hostname.endsWith(".supabase.co"),
+      matcher: ({ url }) =>
+        url.hostname.endsWith(".supabase.co") &&
+        url.pathname.startsWith("/storage/v1/object/public/") &&
+        /\.(?:mp3|wav|ogg|m4a)$/.test(url.pathname),
       handler: new CacheFirst({
         cacheName: "dhikr-Audio",
         plugins: [
