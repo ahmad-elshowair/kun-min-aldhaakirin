@@ -125,6 +125,7 @@ export default function AudioPlayer({ url, title }: AudioPlayerProps) {
       <audio
         ref={audioRef}
         src={url}
+        aria-label={title}
         preload="auto"
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
