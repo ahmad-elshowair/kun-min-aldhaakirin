@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 // ── AUDIO PLAYER PROPS ─────────────────────────────────────────────
 interface AudioPlayerProps {
   url: string;
+  title?: string;
 }
 
 // ── WAVEFORM DATA (SIMULATED) ──────────────────────────────────────
@@ -19,7 +20,7 @@ const WAVE_PATTERN = [
 ];
 
 // ── AUDIO PLAYER ─────────────────────────────────────────────
-export default function AudioPlayer({ url }: AudioPlayerProps) {
+export default function AudioPlayer({ url, title }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
