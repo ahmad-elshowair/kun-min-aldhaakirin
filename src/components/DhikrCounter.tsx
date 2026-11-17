@@ -2,11 +2,19 @@
 
 import { Button } from "@/components/ui/button";
 import { IDhikrCounterProps } from "@/definitions";
+import { useCounterStore } from "@/store/useCounterStore";
 import { FC, useEffect, useState } from "react";
 import { BiReset } from "react-icons/bi";
 
-const DhikrCounter: FC<IDhikrCounterProps> = ({ maxCount }) => {
-  const [count, setCount] = useState(0);
+const DhikrCounter: FC<IDhikrCounterProps> = ({ dhikrId, maxCount }) => {
+  const savedCount = useCounterStore((state) =>
+    dhikrId ? state.counts[dhikrId] : undefined,
+  );
+
+  const setStoredCount = useCounterStore((state) => state.setCount);
+
+  const count = savedCount ?? 0;
+
   const [isVibrating, setIsVibrating] = useState(false);
 
   // Handle vibration effect
@@ -22,7 +30,7 @@ const DhikrCounter: FC<IDhikrCounterProps> = ({ maxCount }) => {
     e.stopPropagation();
     const max = maxCount ?? 1;
     if (count < max) {
-      setCount((prev) => prev + 1);
+      if (dhikrId) setStoredCount(dhikrId, count + 1);
       setIsVibrating(true);
     }
   };
@@ -69,7 +77,7 @@ const DhikrCounter: FC<IDhikrCounterProps> = ({ maxCount }) => {
         variant={"outline"}
         onClick={(e) => {
           e.stopPropagation();
-          setCount(0);
+          if (dhikrId) setStoredCount(dhikrId, 0);
         }}
         className="h-8 w-8 border-0 absolute top-1 right-2 text-md font-bold text-muted-foreground cursor-pointer z-10 rounded-full"
       >
