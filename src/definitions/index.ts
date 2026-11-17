@@ -9,6 +9,7 @@ export interface ILanguageOption {
 }
 
 export interface IDhikrCounterProps {
+  dhikrId?: string;
   maxCount?: number;
 }
 
@@ -34,7 +35,7 @@ export interface ITimingProps {
 }
 
 export type TDhikr = {
-  dhikr_id?: string;
+  id?: string;
   dhikr?: string;
   translation?: string;
   transliteration?: string;
