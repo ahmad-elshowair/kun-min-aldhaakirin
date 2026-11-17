@@ -10,6 +10,7 @@ import { FaPause, FaPlay } from "react-icons/fa6";
 
 // ── DHIKR ─────────────────────────────────────────────
 const Dhikr: FC<TDhikrProps> = ({
+  id,
   dhikr,
   translation,
   transliteration,
@@ -95,7 +96,7 @@ const Dhikr: FC<TDhikrProps> = ({
           </button>
         )}
       </div>
-      <DhikrCounter maxCount={repeat} />
+      <DhikrCounter dhikrId={id} maxCount={repeat} />
 
       <BlessModal
         isOpen={isModalOpen}
